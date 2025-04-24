@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedBack</title>
+    <link rel="icon" href="book1.webp">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <style>
+        body{
+            background: url('sat1.webp');
+    background-attachment: fixed;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+        }
+    </style>
+   <nav>
+        <label >Libary</label>
+        <ul>
+         <div class="g1">
+             <li><a class="av" href="index.html">Home</a></li>
+             <li ><a class="av" id="a2" href="topic.html" target="_blank">Topics</a></li>
+             <li><a class="av" href="contact.html">Contact</a></li>
+             <li><a class="av" href="feed.html">FeedBack</a></li>
+         </div>
+         </ul>
+        
+     </nav>
+     <h1 class="j1">
+        <center>FEEDBACK</center></h1>
+        <center>
+            <form id="feedback">
+        <div class="fd">
+         <p class="p1">The about page is under development. Share your thoughts and opinion to add in page to make it more funnier!</p>
+         <br>
+         <br>
+        
+         <textarea id="message" class="fd1" rows="2" cols="10" placeholder="Type your message...."></textarea>
+         <br>
+         <br><br>
+         <button class="bt1" type="submit">Submit</button>
+        </form>
+
+        </div>
+    </center>
+    
+    <script>
+   document.addEventListener('DOMContentLoaded', function(){
+        emailjs.init({
+            publicKey: "rnZA9Ss4NIwUhSCC4",
+        });
+
+        const form = document.getElementById('feedback');
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+
+            const formData = {
+                message: document.getElementById("message").value
+            };
+
+            emailjs
+            .send("service_4reyl4y", "template_qn9j36x",formData)
+            .then((response) => {
+                    console.log("Success:");
+                    alert("Message sent successfully!");
+                    form.reset();
+                })
+                .catch((error) => {
+                    console.error("Error: ", error);
+                    alert("Failed to send message.");
+                    form.reset();
+                });
+        });
+    });
+</script>   
+</body>
+</html>
